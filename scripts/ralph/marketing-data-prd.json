@@ -1,0 +1,99 @@
+{
+  "title": "Marketing Data Analysis System",
+  "branchName": "ralph/marketing-data-analysis",
+  "description": "A system to analyze marketing data, including campaign performance tracking, customer segmentation, ROI calculations, and actionable insights generation.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Campaign Data Import",
+      "priority": 1,
+      "description": "As a marketing analyst, I want to import marketing campaign data from various sources so that I can consolidate all campaign metrics in one place.",
+      "acceptanceCriteria": [
+        "Support CSV and JSON file imports",
+        "Validate data structure and required fields",
+        "Handle duplicate records gracefully",
+        "Log import errors with descriptive messages"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-002",
+      "title": "Campaign Performance Metrics",
+      "priority": 2,
+      "description": "As a marketing analyst, I want to calculate key performance metrics for campaigns so that I can evaluate their effectiveness.",
+      "acceptanceCriteria": [
+        "Calculate click-through rate (CTR)",
+        "Calculate conversion rate",
+        "Calculate cost per acquisition (CPA)",
+        "Calculate cost per click (CPC)",
+        "Metrics are computed per campaign and aggregated totals"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-003",
+      "title": "ROI Calculation",
+      "priority": 3,
+      "description": "As a marketing manager, I want to calculate the return on investment for each campaign so that I can determine which campaigns are profitable.",
+      "acceptanceCriteria": [
+        "Calculate ROI as (Revenue - Cost) / Cost * 100",
+        "Support configurable revenue attribution models",
+        "Display ROI alongside other campaign metrics",
+        "Flag campaigns with negative ROI"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-004",
+      "title": "Customer Segmentation",
+      "priority": 4,
+      "description": "As a marketing analyst, I want to segment customers based on behavior and demographics so that I can target campaigns more effectively.",
+      "acceptanceCriteria": [
+        "Segment by demographic attributes (age, location, etc.)",
+        "Segment by behavioral data (purchase history, engagement)",
+        "Support custom segmentation rules",
+        "Export segment definitions and membership lists"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-005",
+      "title": "Campaign Comparison Report",
+      "priority": 5,
+      "description": "As a marketing manager, I want to compare performance across multiple campaigns so that I can identify best practices and optimize future campaigns.",
+      "acceptanceCriteria": [
+        "Compare up to 10 campaigns side-by-side",
+        "Show all key metrics in comparison view",
+        "Rank campaigns by configurable metric",
+        "Export comparison report to CSV"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-006",
+      "title": "Trend Analysis",
+      "priority": 6,
+      "description": "As a marketing analyst, I want to view performance trends over time so that I can identify patterns and seasonality.",
+      "acceptanceCriteria": [
+        "Display metrics over daily, weekly, monthly intervals",
+        "Calculate period-over-period growth rates",
+        "Identify statistically significant trend changes",
+        "Support date range filtering"
+      ],
+      "passes": false
+    },
+    {
+      "id": "US-007",
+      "title": "Insights Generation",
+      "priority": 7,
+      "description": "As a marketing manager, I want automated insights based on the data so that I can quickly understand what actions to take.",
+      "acceptanceCriteria": [
+        "Identify top and bottom performing campaigns",
+        "Highlight anomalies in performance metrics",
+        "Suggest budget reallocation opportunities",
+        "Generate plain-language summary of findings"
+      ],
+      "passes": false
+    }
+  ]
+}
