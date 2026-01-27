@@ -1,4 +1,5 @@
-#!/bin/bash
+@'
+#!/usr/bin/env bash
 # Ralph Wiggum - Long-running AI agent loop
 # Usage: ./ralph.sh [max_iterations]
 
@@ -10,6 +11,24 @@ PRD_FILE="$SCRIPT_DIR/prd.json"
 PROGRESS_FILE="$SCRIPT_DIR/progress.txt"
 ARCHIVE_DIR="$SCRIPT_DIR/archive"
 LAST_BRANCH_FILE="$SCRIPT_DIR/.last-branch"
+CODEX_BIN="${CODEX_BIN:-codex}"
+
+if ! command -v "$CODEX_BIN" >/dev/null 2>&1; then
+  case "$(uname -s 2>/dev/null || echo "")" in
+    MINGW*|MSYS*|CYGWIN*)
+      if command -v "${CODEX_BIN}.exe" >/dev/null 2>&1; then
+        CODEX_BIN="${CODEX_BIN}.exe"
+      else
+        echo "Error: codex CLI not found. Ensure codex.exe is installed and on PATH, or set CODEX_BIN." >&2
+        exit 1
+      fi
+      ;;
+    *)
+      echo "Error: codex CLI not found. Ensure codex is installed and on PATH, or set CODEX_BIN." >&2
+      exit 1
+      ;;
+  esac
+fi
 
 # Archive previous run if branch changed
 if [ -f "$PRD_FILE" ] && [ -f "$LAST_BRANCH_FILE" ]; then
@@ -59,8 +78,8 @@ for i in $(seq 1 $MAX_ITERATIONS); do
   echo "  Ralph Iteration $i of $MAX_ITERATIONS"
   echo "═══════════════════════════════════════════════════════"
   
-  # Run amp with the ralph prompt
-  OUTPUT=$(cat "$SCRIPT_DIR/prompt.md" | amp --dangerously-allow-all 2>&1 | tee /dev/stderr) || true
+  # Run codex with the ralph prompt
+  OUTPUT=$(cat "$SCRIPT_DIR/prompt.md" | "$CODEX_BIN" --dangerously-allow-all 2>&1 | tee /dev/stderr) || true
   
   # Check for completion signal
   if echo "$OUTPUT" | grep -q "<promise>COMPLETE</promise>"; then
@@ -78,3 +97,4 @@ echo ""
 echo "Ralph reached max iterations ($MAX_ITERATIONS) without completing all tasks."
 echo "Check $PROGRESS_FILE for status."
 exit 1
+'@ | Set-Content -NoNewline -Encoding UTF8 .\scripts\ralph.sh
